@@ -2,7 +2,7 @@
 from typing import List, Optional
 from datetime import datetime
 from database import get_connection
-from models import Archer, Round, Score, End, Gender, AgeClass
+from models import Archer, Round, Score, End, Gender, AgeClass, RangeDefinition
 from config import Equipment
 
 
@@ -49,7 +49,19 @@ class ArcherRepository:
         cur.execute("SELECT * FROM archers ORDER BY last_name, first_name")
         rows = cur.fetchall()
         conn.close()
-        return [Archer(**dict(row)) for row in rows]  # Note: may need enum conversion
+        archers = []
+        for row in rows:
+            data = dict(row)
+            archers.append(Archer(
+                id=data['id'],
+                first_name=data['first_name'],
+                last_name=data['last_name'],
+                gender=Gender(data['gender']),
+                age_class=AgeClass(data['age_class']),
+                default_equipment=Equipment(data['default_equipment']),
+                date_of_birth=data['date_of_birth']
+            ))
+        return archers
 
 class RoundRepository:
 

@@ -196,7 +196,7 @@ def menu_club_records():
 
 def main():
     print("\n" + "=" * 60)
-    print("  🏹  Archery Score Recording System")
+    print("    Archery Score Recording System")
     print("=" * 60)
     init_db()
 
@@ -213,7 +213,7 @@ def main():
         choice = _prompt("Choice")
 
         if choice == "0":
-            print("\n  Goodbye! 🏹\n"); break
+            print("\n  Goodbye! \n"); break
         elif choice == "1":
             menu_seed()
         elif choice == "2":

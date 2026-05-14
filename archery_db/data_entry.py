@@ -947,7 +947,7 @@ def main():
         print("  0  Exit")
         choice = input("  Choice: ").strip()
 
-        if   choice == "0": print("\n  Goodbye! 🏹\n"); break
+        if   choice == "0": print("\n  Returning! 🏹\n"); break
         elif choice == "1": menu_archer_entry()
         elif choice == "2": menu_recorder_entry()
         else: print("  Unknown option.")
